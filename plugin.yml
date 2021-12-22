@@ -1,0 +1,5 @@
+main : p.Main
+name : picture
+version : 1.0.0
+author : ump45
+description : image -> map
