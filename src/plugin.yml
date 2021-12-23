@@ -2,7 +2,6 @@ author: ump45
 commands: 
   place: 
     description: "place block"
-    usage: /place
 description: "make map"
 main: p.Main
 name: makeMap

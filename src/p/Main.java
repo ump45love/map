@@ -10,7 +10,7 @@ public class Main extends JavaPlugin{
 	@Override
 	public void onEnable(){
 		Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "start");
-		getCommand("place").setExecutor(new placeBlock());
+		getCommand("place").setExecutor(new getcommand());
 	}
 	@Override
 	public void onDisable(){
