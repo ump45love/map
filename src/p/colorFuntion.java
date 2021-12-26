@@ -1,12 +1,12 @@
 package p;
 
 public class colorFuntion {
-	colorClass[] color = new colorClass[59];
+	colorClass[] color = new colorClass[Type.COLOR_NUMBER];
 	int serch(int r,int g,int b) {
 		int save = -1;
 		int num = 0;
 		int save_num = 999999999;
-		for(int i = 1; i<59; i++) {
+		for(int i = 1; i<=Type.COLOR_NUMBER; i++) {
 			save = distance(r,g,b,i);
 			if(save_num > save) {
 				save_num = save;

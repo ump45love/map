@@ -39,6 +39,7 @@ public class getcommand implements CommandExecutor {
 		  view.addRenderer(a.get(0));
 		  view.getId();
 		  i.setDurability((short) view.getId());
+		  placeBlock.place(0,0,0,Material.ITEM_FRAME,player.getWorld(),player);
 			return false;
 	     }
 }
