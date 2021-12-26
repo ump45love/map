@@ -25,17 +25,20 @@ public class getcommand implements CommandExecutor {
 		  placeBlock.place(0,0,0,Material.GLOWSTONE,player.getWorld(),player);
 		  ItemStack item;
 		  ItemStack i = new ItemStack(Material.MAP, 1);
-		  MapView view = Bukkit.createMap(world);
+		  
+		  MapView view = Bukkit.createMap(player.getWorld());
+		  view.setCenterX(100000);
+		  view.setCenterZ(100000);
 		  List<MapRenderer> a = view.getRenderers();
-		  MapCanvas test;
+		  MapCanvas test = null;
 		  ImagePlus imgPlus = new ImagePlus("g.jpg");
-		  BufferedImage img;
-		  test.drawImage(0, 0, img);
-		  a.get(0).render(view, null, player);
+		  test.drawImage(0, 0, imgPlus.getBufferedImage());
+		  a.get(0).render(view, test, player);
 		  for(MapRenderer renderer : view.getRenderers())
 		        view.removeRenderer(renderer);
-		  view.addRenderer(myCustomRenderer);
-		  i.setDurability(view.getId());
+		  view.addRenderer(a.get(0));
+		  view.getId();
+		  i.setDurability((short) view.getId());
 			return false;
 	     }
 }
