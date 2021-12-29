@@ -1,4 +1,4 @@
-package p;
+package image;
 
 public class colorFuntion {
 	colorClass[] color = new colorClass[Type.COLOR_NUMBER];

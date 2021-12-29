@@ -1,4 +1,4 @@
-package p;
+package image;
 
 public class colorClass {
 	public int id;

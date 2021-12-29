@@ -1,4 +1,4 @@
-package p;
+package image;
 
 public class Type {
 	static final short COLOR_NUMBER = 58;

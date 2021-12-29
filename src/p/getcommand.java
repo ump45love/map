@@ -9,6 +9,7 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.map.MapCanvas;
@@ -25,7 +26,8 @@ public class getcommand implements CommandExecutor {
 		  placeBlock.place(0,0,0,Material.GLOWSTONE,player.getWorld(),player);
 		  ItemStack item;
 		  ItemStack i = new ItemStack(Material.MAP, 1);
-		  
+		  ItemStack q = new ItemStack(Material.ITEM_FRAME, 1);
+		  ItemFrame w = null;w.setItem(q);
 		  MapView view = Bukkit.createMap(player.getWorld());
 		  view.setCenterX(100000);
 		  view.setCenterZ(100000);
@@ -39,7 +41,9 @@ public class getcommand implements CommandExecutor {
 		  view.addRenderer(a.get(0));
 		  view.getId();
 		  i.setDurability((short) view.getId());
-		  placeBlock.place(0,0,0,Material.ITEM_FRAME,player.getWorld(),player);
+		  w.setItem(i);
+		  w.setRotation(player.getLocation().getPitch(),player.getLocation().getYaw());
+		  //placeBlock.place(0,0,0,w,player.getWorld(),player);
 			return false;
 	     }
 }
