@@ -7,17 +7,23 @@ import java.util.ArrayList;
 
 public class writeMapId {
 	ArrayList<Integer> array;
-	
-	void insert(int num) {
+	int size;
+	public writeMapId(int size){
+		this.size = size;
+	}
+	public void insert(int num) {
 		array.add(num);
 	}
 	
-	void writeFile() {
+	public void writeFile() {
 		  try {
 			FileOutputStream out = new FileOutputStream(array.get(0)+".ump45");
 			 for(int i = 0; i<array.size(); i++) {
 				 out.write(array.get(i));
+				 if(size == i)
+					 out.write(array.get(0xFFFFFF));
 			 }
+			  out.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -11,18 +11,20 @@ import org.bukkit.map.MapCanvas;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
+import file.writeMapId;
 import ij.ImagePlus;
 import image.imageRead;
 
 public class makeMap {
-	Player player;
+	static Player player;
 	static int countX = 10000;
 	static int countZ = 10000;
 	public makeMap(Player palyer){
 		this.player = player;
 	}
-	void createMap(){
-		  ImagePlus array[][] = imageRead.readImage();
+	public static void createMap(String name){
+		  ImagePlus array[][] = imageRead.readImage(name);
+		  writeMapId writefile = new writeMapId(array.length);
 		  for(int i = 0; i< array.length; i++ ) {
 			  for(int j =0; j<array[0].length; j++) {
 				  MapView view = Bukkit.createMap(player.getWorld());
@@ -36,8 +38,10 @@ public class makeMap {
 				  for(MapRenderer renderer : view.getRenderers())
 				        view.removeRenderer(renderer);
 				  view.addRenderer(a.get(0));
+				  writefile.insert(view.getId());
 			  }
 		  }
+		  writefile.writeFile();
 		  
 		  //ItemStack item = new ItemStack(Material.MAP, 1);
 		 // item.setDurability((short) view.getId());//¾ÆÀÌÅÆ¾ò±â
