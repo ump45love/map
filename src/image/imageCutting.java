@@ -11,7 +11,7 @@ public class imageCutting {
 		cutImage = image;
 	}
 	
-	void cutImage() {
+	ImagePlus[][] cutImage() {
 		int numX = 0;
 		int numY = 0;
 		int imageWidth = cutImage.getWidth();
@@ -19,17 +19,18 @@ public class imageCutting {
 		ImageProcessor cutProcessor = new ColorProcessor(128, 128);
 		ImagePlus combinedImage = new ImagePlus();
 		FileSaver fs = null;
+		ImagePlus[][] array = new ImagePlus[imageWidth/128][imageHeight/128];
 		for(int i =0; i< imageWidth; i=i+128) {
 			for(int j = 0; j< imageHeight; j=j+128) {
 				for(int k = 0; k< 128; k++)
 					for(int l = 0; l< 128; l++)
 						cutProcessor.putPixel(k, l, cutImage.getPixel(k+i, l+j));
 				combinedImage.setProcessor(cutProcessor);
-				fs = new FileSaver(combinedImage);
-				fs.saveAsJpeg("tet"+numX +"."+numY+ ".jpg");
+				array[i][j] = combinedImage;
 				numX++;
 			}
 			numY++;
 		}
+		return array;
 	}
 }

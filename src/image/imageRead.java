@@ -8,7 +8,7 @@ import ij.process.ColorProcessor;
 import ij.process.ImageProcessor;
 
 public class imageRead {
-	void start() {
+	public static ImagePlus[][] readImage() {
 		int num = 0;
 		ImagePlus originImage = new ImagePlus("a.jpg");
 		ImageProcessor originProcessor = originImage.getProcessor();
@@ -43,7 +43,8 @@ public class imageRead {
 		ImagePlus combinedImage = new ImagePlus();
 		combinedImage.setProcessor(paperProcessor);
 		imageCutting cut = new imageCutting(combinedImage);
-		cut.cutImage();
+		ImagePlus[][] array = new ImagePlus[paperWidth/128][paperHeight/128];
+		return cut.cutImage();
 
  }
 }

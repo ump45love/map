@@ -23,7 +23,7 @@ public class getcommand implements CommandExecutor {
 	    public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
 	    {
 		  Player player = (Player)sender;
-		  placeBlock.place(0,0,0,Material.GLOWSTONE,player.getWorld(),player);
+		  
 		  ItemStack item;
 		  ItemStack i = new ItemStack(Material.MAP, 1);
 		  ItemStack q = new ItemStack(Material.ITEM_FRAME, 1);
