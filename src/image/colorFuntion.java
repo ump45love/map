@@ -6,7 +6,7 @@ public class colorFuntion {
 		int save = -1;
 		int num = 0;
 		int save_num = 999999999;
-		for(int i = 1; i<=Type.COLOR_NUMBER; i++) {
+		for(int i = 1; i<Type.COLOR_NUMBER; i++) {
 			save = distance(r,g,b,i);
 			if(save_num > save) {
 				save_num = save;

@@ -10,7 +10,7 @@ import ij.process.ImageProcessor;
 public class imageRead {
 	public static ImagePlus[][] readImage(String name) {
 		int num = 0;
-		ImagePlus originImage = new ImagePlus("name");
+		ImagePlus originImage = new ImagePlus(name);
 		ImageProcessor originProcessor = originImage.getProcessor();
 		BufferedImage originBufferedImage = originProcessor.getBufferedImage();
 		colorFuntion f = new colorFuntion();

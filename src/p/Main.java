@@ -4,15 +4,26 @@ import java.io.File;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.World;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin{
 	@Override
 	public void onEnable(){
-		String path = "새폴더\\mapData";
-		File Folder = new File(path);
+		File cfile = new File(getDataFolder(),"config.yml");
+		if(cfile.length() == 0) {
+			getConfig().options().copyDefaults(true);
+			saveConfig();
+		}
+		File Folder = new File(getDataFolder(),"image");
+		if (!Folder.exists()) {
+			try{
+			    Folder.mkdir(); //폴더 생성합니다.
+		        } 
+		        catch(Exception e){
+			    e.getStackTrace();
+			}     
+		}
+		Folder = new File(getDataFolder(),"map");
 		if (!Folder.exists()) {
 			try{
 			    Folder.mkdir(); //폴더 생성합니다.
@@ -22,7 +33,7 @@ public class Main extends JavaPlugin{
 			}     
 		}
 		Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "start");
-		getCommand("place").setExecutor(new getcommand());
+		getCommand("map").setExecutor(new getcommand());
 	}
 	@Override
 	public void onDisable(){

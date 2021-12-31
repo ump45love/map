@@ -1,23 +1,14 @@
 package p;
 
-import java.awt.image.BufferedImage;
-import java.util.List;
+import java.io.File;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.map.MapCanvas;
-import org.bukkit.map.MapRenderer;
-import org.bukkit.map.MapView;
 import minecraft.makeMap;
 import file.check;
-import ij.ImagePlus;
+import file.show;
 
 public class getcommand implements CommandExecutor {
 	  @Override
@@ -25,6 +16,56 @@ public class getcommand implements CommandExecutor {
 	    {
 		  Player player = (Player)sender;
 		  if(player.isOp()) {
+			  if(args.length >0) {
+				  if(args[0].equals("image")) {
+					  if(args.length >1) {
+						  if(args[1].equals("list")) {
+								  player.sendMessage(show.fileList());
+						  }
+						  else if(args[1].equals("create")) {
+							  String dir = "./plugins/makeMap/image/"+args[2];
+							  if(check.chkFile(dir))
+								  makeMap.createMap(dir,player);
+							  else
+								  player.sendMessage("없는 이름입니다.");
+						  }
+						  else {
+							  player.sendMessage("/map image list");
+							  player.sendMessage("/map image create");
+						  }
+					  }
+					  else {
+						  player.sendMessage("/map image list");
+						  player.sendMessage("/map image create");
+					  }
+					  }
+				  else if(args[0].equals("map")) {
+					  if(args.length >1) {
+						  if(args[1].equals("list")) {}
+						  else if(args[1].equals("create")) {}
+					      else {
+							  player.sendMessage("/map map list");
+							  player.sendMessage("/map map create");
+					      }
+					  }
+				      else {
+						  player.sendMessage("/map map list");
+						  player.sendMessage("/map map create");
+				      }
+				  }
+				  else {
+					  player.sendMessage("/map image");
+					  player.sendMessage("/map map");
+				  }
+				  }
+			  else {
+				  player.sendMessage("/map image");
+				  player.sendMessage("/map map");
+			  }
+		  }
+		  
+			  
+			  /*
 			  if(args[0].equals("image")) {
 				  if(args[1].equals("list")) {}
 				  else if(args[1].equals("create")) {
@@ -38,7 +79,7 @@ public class getcommand implements CommandExecutor {
 			  }
 			  else if(args[0].equals("map")) {
 				  if(args[1].equals("list")) {}
-			      if(args[1].equals("create")) {}
+				  else if(args[1].equals("create")) {}
 			      else {
 					  player.sendMessage("/map map list");
 					  player.sendMessage("/map map create");
@@ -48,7 +89,8 @@ public class getcommand implements CommandExecutor {
 				  player.sendMessage("/map image");
 				  player.sendMessage("/map map");
 			  }
-		  }
+			  */
+		  
 		  
 		  
 		  /*

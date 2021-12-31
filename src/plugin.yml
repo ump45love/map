@@ -1,6 +1,6 @@
 author: ump45
 commands: 
-  place: 
+  map: 
     description: "place block"
 description: "make map"
 main: p.Main

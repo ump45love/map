@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class writeMapId {
-	ArrayList<Integer> array;
+	ArrayList<Integer> array = new ArrayList<Integer>();;
 	int size;
 	public writeMapId(int size){
 		this.size = size;
@@ -17,7 +17,7 @@ public class writeMapId {
 	
 	public void writeFile() {
 		  try {
-			FileOutputStream out = new FileOutputStream(array.get(0)+".ump45");
+			FileOutputStream out = new FileOutputStream("./plugins/makeMap/map/"+array.get(0)+".ump45");
 			 for(int i = 0; i<array.size(); i++) {
 				 out.write(array.get(i));
 				 if(size == i)

@@ -1,5 +1,6 @@
 package minecraft;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -16,14 +17,12 @@ import ij.ImagePlus;
 import image.imageRead;
 
 public class makeMap {
-	static Player player;
 	static int countX = 10000;
 	static int countZ = 10000;
-	public makeMap(Player palyer){
-		this.player = player;
-	}
-	public static void createMap(String name){
+	public static void createMap(String name, Player player){
+		  player.sendMessage("asd");
 		  ImagePlus array[][] = imageRead.readImage(name);
+		  player.sendMessage("asdasddas");
 		  writeMapId writefile = new writeMapId(array.length);
 		  for(int i = 0; i< array.length; i++ ) {
 			  for(int j =0; j<array[0].length; j++) {
@@ -31,14 +30,21 @@ public class makeMap {
 				  view.setCenterX(countX);
 				  view.setCenterZ(countZ);
 				  countX += 129;
-				  List<MapRenderer> a = view.getRenderers();
-				  MapCanvas test = null;
-				  test.drawImage(0, 0, array[i][j].getBufferedImage());
-				  a.get(0).render(view, test, player);
-				  for(MapRenderer renderer : view.getRenderers())
-				        view.removeRenderer(renderer);
-				  view.addRenderer(a.get(0));
+				  
+				  for(MapRenderer r : view.getRenderers()) {
+					  view.removeRenderer(r);
+				  }
+				  BufferedImage save = array[i][j].getBufferedImage();
+				  view.addRenderer(new MapRenderer() {
+				  public void render(MapView view, MapCanvas canvas, Player player) {
+				  canvas.drawImage(0, 0, save);
+				  }
+				  });
+
 				  writefile.insert(view.getId());
+				  ItemStack item = new ItemStack(Material.MAP, 1);
+				  item.setDurability((short) view.getId());//æ∆¿Ã≈∆æÚ±‚
+				  player.getInventory().addItem(item);
 			  }
 		  }
 		  writefile.writeFile();

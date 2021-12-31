@@ -26,7 +26,7 @@ public class imageCutting {
 					for(int l = 0; l< 128; l++)
 						cutProcessor.putPixel(k, l, cutImage.getPixel(k+i, l+j));
 				combinedImage.setProcessor(cutProcessor);
-				array[i][j] = combinedImage;
+				array[i/128][j/128] = combinedImage;
 				numX++;
 			}
 			numY++;
