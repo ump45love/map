@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: ./lib/spigot-1.17.1.jar
+Class-Path: ./lib/ij.jar
+Main-Class: ./src.p.Main
