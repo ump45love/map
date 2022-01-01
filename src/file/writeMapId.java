@@ -15,13 +15,20 @@ public class writeMapId {
 		array.add(num);
 	}
 	
-	public void writeFile() {
+	public void writeFile(String mapName) {
 		  try {
-			FileOutputStream out = new FileOutputStream("./plugins/makeMap/map/"+array.get(0)+".ump45");
+			  if(mapName == null) {
+				  mapName = array.get(0)+"";
+			  }
+			  String ori = mapName;
+			  int chk = 0;
+			  while(check.chkFile("./plugins/makeMap/map/"+mapName+".ump45"))
+				  mapName = ori + chk++;
+			FileOutputStream out = new FileOutputStream("./plugins/makeMap/map/"+mapName+".ump45");
 			 for(int i = 0; i<array.size(); i++) {
 				 out.write(array.get(i));
 				 if(size == i)
-					 out.write(array.get(0xFFFFFF));
+					 out.write(0xFFFFFF);
 			 }
 			  out.close();
 		} catch (FileNotFoundException e) {

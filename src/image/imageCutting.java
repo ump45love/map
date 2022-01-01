@@ -12,24 +12,21 @@ public class imageCutting {
 	}
 	
 	ImagePlus[][] cutImage() {
-		int numX = 0;
-		int numY = 0;
 		int imageWidth = cutImage.getWidth();
 		int imageHeight = cutImage.getHeight();
-		ImageProcessor cutProcessor = new ColorProcessor(128, 128);
-		ImagePlus combinedImage = new ImagePlus();
 		FileSaver fs = null;
 		ImagePlus[][] array = new ImagePlus[imageWidth/128][imageHeight/128];
 		for(int i =0; i< imageWidth; i=i+128) {
 			for(int j = 0; j< imageHeight; j=j+128) {
+				ImagePlus combinedImage = new ImagePlus();
+				ImageProcessor cutProcessor = new ColorProcessor(128, 128);
 				for(int k = 0; k< 128; k++)
 					for(int l = 0; l< 128; l++)
 						cutProcessor.putPixel(k, l, cutImage.getPixel(k+i, l+j));
 				combinedImage.setProcessor(cutProcessor);
 				array[i/128][j/128] = combinedImage;
-				numX++;
+				System.out.println(i/128+""+j/128);
 			}
-			numY++;
 		}
 		return array;
 	}

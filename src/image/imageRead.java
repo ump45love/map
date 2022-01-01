@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import ij.ImagePlus;
+import ij.io.FileSaver;
 import ij.process.ColorProcessor;
 import ij.process.ImageProcessor;
 
@@ -43,7 +44,6 @@ public class imageRead {
 		ImagePlus combinedImage = new ImagePlus();
 		combinedImage.setProcessor(paperProcessor);
 		imageCutting cut = new imageCutting(combinedImage);
-		ImagePlus[][] array = new ImagePlus[paperWidth/128][paperHeight/128];
 		return cut.cutImage();
 
  }
