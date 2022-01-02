@@ -10,7 +10,7 @@ public class show {
 		String[] combine = Folder.list();
 		String content = "";
 		for(int i =0; i<combine.length; i++)
-			content = content +" || " + combine[i];
+			content = content +"|| " + combine[i];
 		return content;
 	}
 	void folderList() {

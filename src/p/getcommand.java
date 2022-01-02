@@ -32,6 +32,7 @@ public class getcommand implements CommandExecutor {
 					  player.sendMessage("/map map list");
 					  player.sendMessage("/map map create [fileName]");
 		  		}
+		  		break;
 		  	case 2:
 		  		if(args[0].equals("image")) {
 		  			if(args[1].equals("list"))
@@ -63,9 +64,6 @@ public class getcommand implements CommandExecutor {
 		  			 if(args[1].equals("create")) {
 		  				 String dir = "./plugins/makeMap/image/"+args[2];
 						  if(check.chkFile(dir)) {
-							  if(args.length >2)
-								  makeMap.createMap(dir,player,args[3]);
-							  else
 								  makeMap.createMap(dir,player,null);
 						  }				  
 						  else
@@ -86,6 +84,20 @@ public class getcommand implements CommandExecutor {
 					  player.sendMessage("/map map");
 		  		}
 		  		break;
+		  	case 4:
+		  		if(args[0].equals("image")) {
+		  			 if(args[1].equals("create")) {
+		  				 String dir = "./plugins/makeMap/image/"+args[2];
+						  if(check.chkFile(dir)) {
+								  makeMap.createMap(dir,player,args[3]);
+						  }				  
+						  else
+							  player.sendMessage("없는 이름입니다.");
+		  			 }	
+		  		}
+		  			 else
+		  				 player.sendMessage("/map image create [fileName] [name]");
+		  		 break;
 		  		
 		  		
 		  	default:

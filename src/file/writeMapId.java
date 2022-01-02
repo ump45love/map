@@ -30,7 +30,8 @@ public class writeMapId {
 				 if(size == i)
 					 out.write(0xFFFFFF);
 			 }
-			  out.close();
+			 out.close();
+			 out = null;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

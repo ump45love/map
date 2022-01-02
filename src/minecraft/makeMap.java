@@ -22,10 +22,8 @@ public class makeMap {
 	static int countX = 10000;
 	static int countZ = 10000;
 	public static void createMap(String name, Player player,String mapName){
-		  player.sendMessage("asd");
 		  ImagePlus array[][];
 		  array = imageRead.readImage(name);
-		  player.sendMessage("asdasddas");
 		  writeMapId writefile = new writeMapId(array.length);
 		  for(int i = 0; i< array.length; i++ ) {
 			  for(int j =0; j<array[0].length; j++) {
@@ -33,11 +31,11 @@ public class makeMap {
 				  view.setCenterX(countX);
 				  view.setCenterZ(countZ);
 				  countX += 128;
-				  System.out.printf("%d\n",array[i][j].getID());
 				  for(MapRenderer r : view.getRenderers()) {
 					  view.removeRenderer(r);
 				  }
 				  BufferedImage save = array[i][j].getBufferedImage();
+				  array[i][j] = null;
 				  view.addRenderer(new MapRenderer() {
 				  public void render(MapView view, MapCanvas canvas, Player player) {
 				  canvas.drawImage(0, 0, save);

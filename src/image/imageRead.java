@@ -43,7 +43,12 @@ public class imageRead {
 		 }
 		ImagePlus combinedImage = new ImagePlus();
 		combinedImage.setProcessor(paperProcessor);
+		originImage = null;
+		originProcessor = null;
+		originBufferedImage = null;
+		f = new colorFuntion();
 		imageCutting cut = new imageCutting(combinedImage);
+		combinedImage=null;
 		return cut.cutImage();
 
  }

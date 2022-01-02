@@ -14,7 +14,6 @@ public class imageCutting {
 	ImagePlus[][] cutImage() {
 		int imageWidth = cutImage.getWidth();
 		int imageHeight = cutImage.getHeight();
-		FileSaver fs = null;
 		ImagePlus[][] array = new ImagePlus[imageWidth/128][imageHeight/128];
 		for(int i =0; i< imageWidth; i=i+128) {
 			for(int j = 0; j< imageHeight; j=j+128) {
@@ -25,7 +24,6 @@ public class imageCutting {
 						cutProcessor.putPixel(k, l, cutImage.getPixel(k+i, l+j));
 				combinedImage.setProcessor(cutProcessor);
 				array[i/128][j/128] = combinedImage;
-				System.out.println(i/128+""+j/128);
 			}
 		}
 		return array;
