@@ -1,5 +1,7 @@
 package image;
 
+import p.Type;
+
 public class colorFuntion {
 	colorClass[] color = new colorClass[Type.COLOR_NUMBER];
 	int serch(int r,int g,int b) {
