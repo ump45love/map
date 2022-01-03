@@ -2,11 +2,14 @@ package p;
 
 import java.io.File;
 
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import minecraft.makeMap;
+import minecraft.placeBlock;
 import file.check;
 import file.show;
 
@@ -74,7 +77,9 @@ public class getcommand implements CommandExecutor {
 		  		}
 
 		  		else if(args[0].equals("map")) {
-		  			if(args[1].equals("create")) {}
+		  			if(args[1].equals("create")) {
+		  				 //placeBlock.place(player.getLocation().getX(),player.getLocation().getY(), Material.STONE,player.getWorld(),player);
+		  			}
 		  			else
 						  player.sendMessage("/map map create [fileName] [name]");
 		  			

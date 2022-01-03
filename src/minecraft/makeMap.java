@@ -17,6 +17,9 @@ import file.writeMapId;
 import ij.ImagePlus;
 import ij.io.FileSaver;
 import image.imageRead;
+import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.world.entity.decoration.EntityItemFrame;
+import net.minecraft.world.level.World;
 
 public class makeMap {
 	static int countX = 10000;
@@ -24,6 +27,7 @@ public class makeMap {
 	public static void createMap(String name, Player player,String mapName){
 		  ImagePlus array[][];
 		  array = imageRead.readImage(name);
+		  ItemStack x = null;
 		  writeMapId writefile = new writeMapId(array.length);
 		  for(int i = 0; i< array.length; i++ ) {
 			  for(int j =0; j<array[0].length; j++) {
@@ -46,11 +50,11 @@ public class makeMap {
 				  MapMeta meta = (MapMeta) stack.getItemMeta();
 				  meta.setMapId(view.getId());
 				  stack.setItemMeta(meta);
+				  x = stack;
 				  player.getInventory().addItem(stack);
-				  player.sendMessage(view.getId()+"");
 			  }
 		  }
-		  writefile.writeFile(mapName);
+		  placeBlock.place(Material.STONE,player.getWorld(),player,x);
 		  
 		  //ItemStack item = new ItemStack(Material.MAP, 1);
 		 // item.setDurability((short) view.getId());//¾ÆÀÌÅÆ¾ò±â
