@@ -17,25 +17,22 @@ import p.Main;
 public class placeBlock extends Main{
 	
 	@SuppressWarnings("deprecation")
-	public static void place(Material block,World world,Player player,ItemStack id) {
+	public static void place(Material block,World world,Player player,ItemStack[][] array) {
 		
 		    Location loc = player.getLocation();
 		    World w = loc.getWorld();
 		    Block b = null;
 		    double x = loc.getX();
 		    double y = loc.getY();
-			for(int i = 0; i< 10; i++) {
-				for(int j = 0; j<10; j++) {
+			for(int i = 0; i< array.length; i++) {
+				loc.setX(x+i);
+				for(int j = 0; j<array[0].length; j++) {
+					loc.setY(y+j); 
 					 b = w.getBlockAt(loc);
 					 b.setType(block);
 					 ItemFrame f = (ItemFrame) world.spawn(new Location(world,loc.getX(),loc.getY(),loc.getZ()+1), ItemFrame.class);
-			         f.setItem(id);
-					 b.setType(block);
-					 loc.setX(x+j);
-					 
-					 
+			         f.setItem(array[i][array[0].length-j-1]);
 				}
-				loc.setY(y+i);
 			}
 		
 	}
