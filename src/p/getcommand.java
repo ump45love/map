@@ -68,6 +68,7 @@ public class getcommand implements CommandExecutor {
 		  				 String dir = "./plugins/makeMap/image/"+args[2];
 						  if(check.chkFile(dir)) {
 								  makeMap.createMap(dir,player,null);
+								  player.getWorld().save();
 						  }				  
 						  else
 							  player.sendMessage("없는 이름입니다.");

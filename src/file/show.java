@@ -13,6 +13,12 @@ public class show {
 			content = content +"|| " + combine[i];
 		return content;
 	}
+	
+	public static String[] fileListArray(String dir) {
+		File Folder = new File(dir);
+		String[] list = Folder.list();
+		return list;
+	}
 	void folderList() {
 		
 	}

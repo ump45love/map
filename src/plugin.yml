@@ -2,7 +2,6 @@ author: ump45
 commands: 
   map: 
     description: "place block"
-description: "make map"
 main: p.Main
 name: makeMap
 version: "1.0.0"

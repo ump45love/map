@@ -21,15 +21,23 @@ public class writeMap {
 	}
 	
 	void writeImage(ImagePlus image[][],DataOutputStream writer) throws IOException {
+		int[] save = new int[3];
+		byte[] r = new byte[128];
+		byte[] g = new byte[128];
+		byte[] b = new byte[128];
 		 for(int i = 0; i<image.length; i++) {
-			 for(int j = 0; i<image[0].length; j++) {
-				 for(int k = 0; k<128; k++)
+			 for(int j = 0; j<image[0].length; j++) {
+				 for(int k = 0; k<128; k++) {
 					 for(int l = 0; l<128; l++) {
-					 int save[] = image[i][j].getPixel(k, l);
-					 int color = (save[0]<<8) + (save[1]<<4) + save[2];
-					 writer.writeInt(color);
-					 writer.close();
+					 save = image[i][j].getPixel(k, l);
+					 r[l] = (byte)save[0];
+					 g[l]= (byte)save[1];
+					 b[l] = (byte)save[2];
 					 }
+					 writer.write(r,0,128);
+					 writer.write(g,0,128);
+					 writer.write(b,0,128);
+				 }
 			 }
 		 }
 		
@@ -37,7 +45,7 @@ public class writeMap {
 	}
 	void writeFile(DataOutputStream writer) throws IOException {
 		 for(int i = 1; i<=array.size(); i++) {
-			 writer.writeLong(array.get(i-1));
+			 writer.writeInt(array.get(i-1));
 			 if(i%size == 0)
 				 writer.writeByte(-1);
 		 }

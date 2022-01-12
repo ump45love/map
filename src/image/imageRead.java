@@ -15,14 +15,6 @@ public class imageRead {
 		ImageProcessor originProcessor = originImage.getProcessor();
 		BufferedImage originBufferedImage = originProcessor.getBufferedImage();
 		colorFuntion f = new colorFuntion();
-		for(int y=0;y<originBufferedImage.getHeight();y++)
-		{
-		    for(int x=0;x<originBufferedImage.getWidth();x++)
-		    {
-		        Color color = new Color(originBufferedImage.getRGB(x, y));
-		        num = f.serch(color.getRed(),color.getGreen(),color.getBlue());
-		    }
-		}
 		ImagePlus convertImage = new ImagePlus("asd", originBufferedImage);
 		int paperWidth = (convertImage.getWidth()>>7)<<7;
 		int paperHeight = (convertImage.getHeight()>>7)<<7;

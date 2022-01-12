@@ -3,8 +3,8 @@ package image;
 import p.Type;
 
 public class colorFuntion {
-	colorClass[] color = new colorClass[Type.COLOR_NUMBER];
-	int serch(int r,int g,int b) {
+	static colorClass[] color = new colorClass[Type.COLOR_NUMBER];
+	public static int serch(int r,int g,int b) {
 		int save = -1;
 		int num = 0;
 		int save_num = 999999999;
@@ -15,10 +15,15 @@ public class colorFuntion {
 				num =i;
 			}
 		}
-		return color[num].id;
+		return num;
 	}
-	int distance(int r,int g,int b,int num ) {
+	static int distance(int r,int g,int b,int num ) {
 		return (int)Math.round(Math.pow(color[num].r - r,2) + Math.pow(color[num].g - g,2) + Math.pow(color[num].b - b,2));		
+	}
+	
+	public int getRBG(int id) {
+		return (color[id].r<<16)+(color[id].g<<8)+(color[id].b);
+		
 	}
 	public colorFuntion(){
 		color[1] = new colorClass(7,0,124,0);

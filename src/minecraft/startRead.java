@@ -11,26 +11,41 @@ import org.bukkit.map.MapCanvas;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
+import file.show;
+import file.readMap;
+import p.Type;
+
 public class startRead {
 	
-	void read(){
-		  MapView view = Bukkit.getMap(0);
-		  for(MapRenderer r : view.getRenderers()) {
-			  view.removeRenderer(r);
-		  }
-		  BufferedImage save = array[i][j].getBufferedImage();
-		  view.addRenderer(new MapRenderer() {
-		  public void render(MapView view, MapCanvas canvas, Player player) {
-		  canvas.drawImage(0, 0, save);
-		  }
-		  });
-		  writefile.insert(view.getId());
-		  ItemStack stack = new ItemStack(Material.FILLED_MAP);
-		  MapMeta meta = (MapMeta) stack.getItemMeta();
-		  meta.setMapId(view.getId());
-		  stack.setItemMeta(meta);
-		  itemArray[i][j] = stack;
-		  //player.getInventory().addItem(stack);
+	public static void read(){
+		readMap readStart = new readMap(null);
+		String fileNameArray[] = show.fileListArray(Type.MAP_DIR);
+		MapView view = null;
+		int getWidth = 0;
+		int getHeight = 0;
+		int[] getId = null;
+		for(int i = 0; i<fileNameArray.length; i++) {
+			readStart.setMapName(fileNameArray[i]);
+			readStart.read();
+			getWidth = readStart.getMapSize()[0];
+			getHeight = readStart.getMapSize()[1];
+			getId = readStart.getMapId();
+			int num = 0;
+			for(int j = 0; j<getWidth; j++) {
+				for(int k = 0; k < getHeight; k++) {
+					view = Bukkit.getMap(getId[num++]);
+					  for(MapRenderer r : view.getRenderers()) {
+						  view.removeRenderer(r);
+					  }
+					  BufferedImage save =readStart.getImage(j, k).getBufferedImage();
+					  view.addRenderer(new MapRenderer() {
+						  public void render(MapView view, MapCanvas canvas, Player player) {
+						  canvas.drawImage(0, 0, save);
+						  }
+						  });
+				}
+			}
+		}
 	}
 
 }

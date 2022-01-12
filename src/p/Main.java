@@ -6,6 +6,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import minecraft.startRead;
+
 public class Main extends JavaPlugin{
 	@Override
 	public void onEnable(){
@@ -31,6 +33,9 @@ public class Main extends JavaPlugin{
 		        catch(Exception e){
 			    e.getStackTrace();
 			}     
+		}
+		else {
+			startRead.read();
 		}
 		Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "start");
 		getCommand("map").setExecutor(new getcommand());
